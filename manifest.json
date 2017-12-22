@@ -10,5 +10,9 @@
       "scripts": ["background.js"]
   },
   "permissions": ["tabs"],
+  "content_scripts": [{
+      "js": ["content.js"],
+      "matches": ["https://mydramalist.com/*"]
+   }],
   "manifest_version": 2
 }
