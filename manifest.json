@@ -14,5 +14,10 @@
       "js": ["content.js"],
       "matches": ["https://mydramalist.com/*"]
    }],
-  "manifest_version": 2
+  "manifest_version": 2,
+"icons": {
+        "16" : "icon.png",
+        "48" : "icon.png",
+        "128": "icon.png"
+  }
 }

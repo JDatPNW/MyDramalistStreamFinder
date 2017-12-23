@@ -7,17 +7,26 @@ function openStreamTabs(){
     var url = window.location.href;
 
     var partsArray = url.split('-');
-    var KA_URL = "http://www.kissasian.ch/drama/";
-    var DC_URL = "https://dramacool9.com/drama-detail/"
+    var KA_URL = "http://www.kissasian.ch/drama/"; //KissAsia
+    var DC_URL = "https://dramacool9.com/drama-detail/" //DramaCool
+    var DN_URL = "https://ondramanice.io/drama/" //DramaNice
+    var GDJ_URL = "http://www.gooddrama.to/japanese-drama/" //GoodDrama_JP
+
     for (var i = 1; i < partsArray.length; i++){
         KA_URL = KA_URL + partsArray[i] + "-";
         DC_URL = DC_URL + partsArray[i] + "-";
+        DN_URL = DN_URL + partsArray[i] + "-";
+        GDJ_URL = GDJ_URL + partsArray[i] + "-";
     }
     KA_URL = KA_URL.substring(0, KA_URL.length - 1);
     DC_URL = DC_URL.substring(0, DC_URL.length - 1);
+    GDJ_URL = GDJ_URL.substring(0, GDJ_URL.length - 1);
+    DN_URL += "detail";
 
     openInNewTab(KA_URL);
     openInNewTab(DC_URL);
+    openInNewTab(DN_URL);
+    openInNewTab(GDJ_URL);
 }
 
 function createElement( str ) {
@@ -32,7 +41,9 @@ function createElement( str ) {
 }
 
 window.addEventListener("load", function load(event) {
-    window.removeEventListener("load", load, false); // Listener entfernen, da nicht mehr benötigt
+  window.removeEventListener("load", load, false); // Remove Listener, not needed anymore
+    var Regex = /https:\/\/mydramalist.com\/[1-9]+.*/;
+    if (Regex.test(window.location.href)){
 
     var elements = document.getElementsByClassName("film-cover");
     if(elements.length == 0){
@@ -65,5 +76,5 @@ window.addEventListener("load", function load(event) {
     link.addEventListener('click', function() {
         openStreamTabs();
     });
-
+};
 }, false);
