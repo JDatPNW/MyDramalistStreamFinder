@@ -7,7 +7,7 @@ function openStreamTabs(Selection){
     var url = window.location.href;
 
     var partsArray = url.split('-');
-    var KA_URL = "http://www.kissasian.ch/drama/"; //KissAsia
+    var KA_URL = "http://www.kissasian.ch/drama/"; //KissAsian
     var DC_URL = "https://dramacool9.com/drama-detail/" //DramaCool
     var DN_URL = "https://ondramanice.io/drama/" //DramaNice
     var GDJ_URL = "http://www.gooddrama.to/japanese-drama/" //GoodDrama_JP
@@ -58,7 +58,7 @@ window.addEventListener("load", function load(event) {
       innerHTML    += "<button id=\"Stream_Dropdown\" class=\"btn m-b-sm white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> ";
       innerHTML    += "<div class=\"dropdown-menu dropdown-menu-right manage-clist\">";
       innerHTML    += "<div class=\"text-center p-a\">";
-      innerHTML    += "<button id =\"KA_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\">KissAsia</button> ";
+      innerHTML    += "<button id =\"KA_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\">KissAsian</button> ";
       innerHTML    += "<button id =\"DC_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\">DramaCool</a>";
       innerHTML    += "<button id =\"DN_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>DramaNice</a>";
       innerHTML    += "<button id =\"GDJ_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>GoodDrama Japanese</a>";
