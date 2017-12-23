@@ -7,7 +7,6 @@
   },
   "background":
   {
-      "scripts": ["background.js"]
   },
   "permissions": ["tabs"],
   "content_scripts": [{

@@ -46,16 +46,16 @@ function createElement( str ) {
 
 window.addEventListener("load", function load(event) {
   window.removeEventListener("load", load, false); // Remove Listener, not needed anymore
-    var Regex = /https:\/\/mydramalist.com\/[1-9]+[^\/]*/;
+    var Regex = /https:\/\/mydramalist.com\/[0-9]+[^\/]*$/;
     if (Regex.test(window.location.href)){  //Regex check
       var elements = document.getElementsByClassName("film-cover");
       if(elements.length == 0){
           return;
       }
 
-      var innerHTML = "<div id=\"Stream_Buttons\" class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"> ";
-      innerHTML    += "<button id=\"Stream_Open_All_Links\" class=\"btn m-b-sm white btn-manage-list main col-xs-10 col-sm-9\" \">Stream Drama</button> ";
-      innerHTML    += "<button id=\"Stream_Dropdown\" class=\"btn m-b-sm white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> ";
+      var innerHTML = "<div id=\"Stream_Buttons\" style=\"margin-top: -.5rem!important\" class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"> ";
+      innerHTML    += "<button id=\"Stream_Open_All_Links\" class=\"btn white btn-manage-list main col-xs-10 col-sm-9\" \">Stream Drama</button> ";
+      innerHTML    += "<button id=\"Stream_Dropdown\" class=\"btn white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> ";
       innerHTML    += "<div class=\"dropdown-menu dropdown-menu-right manage-clist\">";
       innerHTML    += "<div class=\"text-center p-a\">";
       innerHTML    += "<button id =\"KA_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\">KissAsian</button> ";
@@ -64,7 +64,8 @@ window.addEventListener("load", function load(event) {
       innerHTML    += "<button id =\"GDJ_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>GoodDrama Japanese</a>";
       innerHTML    += "</div> </div>";
 
-      elements[0].appendChild(createElement(innerHTML));
+      elements[0].insertBefore(createElement(innerHTML), elements[0].childNodes[elements[0].childNodes.length - 2]);
+      //elements[0].appendChild(createElement(innerHTML));
 
       var All_Links = document.getElementById('Stream_Open_All_Links');
       All_Links.addEventListener('click', function() {
