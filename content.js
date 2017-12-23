@@ -3,7 +3,7 @@ function openInNewTab(url) {
     win.focus();
 }
 
-function openStreamTabs(){
+function openStreamTabs(Selection){
     var url = window.location.href;
 
     var partsArray = url.split('-');
@@ -23,10 +23,14 @@ function openStreamTabs(){
     GDJ_URL = GDJ_URL.substring(0, GDJ_URL.length - 1);
     DN_URL += "detail";
 
-    openInNewTab(KA_URL);
-    openInNewTab(DC_URL);
-    openInNewTab(DN_URL);
-    openInNewTab(GDJ_URL);
+    if (Selection == "Select_All" || Selection == "Select_KA")
+      openInNewTab(KA_URL);
+    if (Selection == "Select_All" || Selection == "Select_DC")
+      openInNewTab(DC_URL);
+    if (Selection == "Select_All" || Selection == "Select_DN")
+      openInNewTab(DN_URL);
+    if (Selection == "Select_All" || Selection == "Select_GDJ")
+      openInNewTab(GDJ_URL);
 }
 
 function createElement( str ) {
@@ -42,39 +46,49 @@ function createElement( str ) {
 
 window.addEventListener("load", function load(event) {
   window.removeEventListener("load", load, false); // Remove Listener, not needed anymore
-    var Regex = /https:\/\/mydramalist.com\/[1-9]+.*/;
-    if (Regex.test(window.location.href)){
+    var Regex = /https:\/\/mydramalist.com\/[1-9]+[^\/]*/;
+    if (Regex.test(window.location.href)){  //Regex check
+      var elements = document.getElementsByClassName("film-cover");
+      if(elements.length == 0){
+          return;
+      }
 
-    var elements = document.getElementsByClassName("film-cover");
-    if(elements.length == 0){
-        return;
-    }
+      var innerHTML = "<div id=\"Stream_Buttons\" class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"> ";
+      innerHTML    += "<button id=\"Stream_Open_All_Links\" class=\"btn m-b-sm white btn-manage-list main col-xs-10 col-sm-9\" \">Stream Drama</button> ";
+      innerHTML    += "<button id=\"Stream_Dropdown\" class=\"btn m-b-sm white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> ";
+      innerHTML    += "<div class=\"dropdown-menu dropdown-menu-right manage-clist\">";
+      innerHTML    += "<div class=\"text-center p-a\">";
+      innerHTML    += "<button id =\"KA_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\">KissAsia</button> ";
+      innerHTML    += "<button id =\"DC_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\">DramaCool</a>";
+      innerHTML    += "<button id =\"DN_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>DramaNice</a>";
+      innerHTML    += "<button id =\"GDJ_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>GoodDrama Japanese</a>";
+      innerHTML    += "</div> </div>";
 
+      elements[0].appendChild(createElement(innerHTML));
 
-    var innerHTML = "<div id=\"Steam_Buttons\" class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"> ";
-    innerHTML += "<button id=\"Stream_Open_All_Links\" class=\"btn m-b-sm white btn-manage-list main col-xs-10 col-sm-9\" \">Stream Drama</button> ";
-    innerHTML += "<button id=\"Stream_Dropdown\" class=\"btn m-b-sm white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> ";
-    innerHTML += "<div class=\"dropdown-menu dropdown-menu-right manage-clist\"> <div class=\"text-center p-a\">";
-    innerHTML += "<a id \"KA\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\" rel=\"nofollow\">KissAsia</a> ";
-    innerHTML += "<a class=\"dropdown-item m-t-sm m-b-sm btn-create-list\" rel=\"nofollow\"> Create a List</a>";
-    innerHTML += "<a class=\"dropdown-item m-t-sm m-b-sm btn-create-list\" rel=\"nofollow\"><i class=\"fa fa-plus\"></i> Create a List</a> </div> </div>";
+      var All_Links = document.getElementById('Stream_Open_All_Links');
+      All_Links.addEventListener('click', function() {
+          openStreamTabs("Select_All");
+      });
 
-    /*
-    var innerHTML = "<div class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"><a href=\"#\" ";
-    innerHTML += "id=\"extension-link\" class=\"btn m-b-sm white btn-manage-list main col-xs-10 col-sm-9\">Stream</a></div>";
+      var KA_Link = document.getElementById('KA_Dropdown');
+      KA_Link.addEventListener('click', function() {
+          openStreamTabs("Select_KA");
+      });
 
-    innerHTML += " <button class=\"btn m-b-sm white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> <div data-rid=\"23950\" class=\"dropdown-menu dropdown-menu-right manage-clist\"> <div class=\"text-center p-a\"><i class=\"fa fa-spin fa-spinner\"></i></div> <div class=\"dropdown-divider\"></div> <a class=\"dropdown-item m-t-sm m-b-sm btn-create-list\" rel=\"nofollow\"><i class=\"fa fa-plus\"></i> Create a List</a> </div> </div>"
-*/
-    elements[0].appendChild(createElement(innerHTML));
+      var DC_Link = document.getElementById('DC_Dropdown');
+      DC_Link.addEventListener('click', function() {
+          openStreamTabs("Select_DC");
+      });
 
-    var link = document.getElementById('Stream_Open_All_Links');
-    link.addEventListener('click', function() {
-        openStreamTabs();
-    });
+      var DN_Link = document.getElementById('DN_Dropdown');
+      DN_Link.addEventListener('click', function() {
+          openStreamTabs("Select_DN");
+      });
 
-    var link = document.getElementById('KA');
-    link.addEventListener('click', function() {
-        openStreamTabs();
-    });
+      var GDJ_Link = document.getElementById('GDJ_Dropdown');
+      GDJ_Link.addEventListener('click', function() {
+          openStreamTabs("Select_GDJ");
+      });
 };
 }, false);
