@@ -1,7 +1,7 @@
 # MyDramalistStreamFinder
 Links dynamically to Netflix, Amazon Prime, Kokowa and Viki straight from the MDL drama page.
 
-### Instalation
+### Installation
    - [Download](https://github.com/JDatPNW/MyDramalistStreamFinder/archive/refs/heads/master.zip)
    - Move the folder to the desired directory on you PC
    - Unzip the folder
