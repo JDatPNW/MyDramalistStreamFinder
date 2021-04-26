@@ -10,7 +10,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa and Viki straight from the MD
   
 ### Usage
   On MDL you should now see another button now that is labeled "Stream Drama". (Depending on your PC, this could take a second, since it will only appear once the page ios fully loaded.)
-  ![screenshot](https://i.imgur.com/ee3Qtxa.png){:height="50%" width="50%"}
+  ![screenshot](https://i.imgur.com/ee3Qtxa.png)
     
   This will open a drop down menu that shows you the sites where you can search for the show. (It searches for the show even if it does not exist)  
   
