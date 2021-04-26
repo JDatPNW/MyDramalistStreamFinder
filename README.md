@@ -16,4 +16,4 @@ Links dynamically to Netflix, Amazon Prime, Kokowa and Viki straight from the MD
   
   ![screenshot](https://i.imgur.com/zuctAAH.png)
 
-  Once you clo=ick on the site you want a new tab will open that will search for that show on that site. Again, it will also search for the show if it does not exist. It does save time by making it all just one click.
+  Once you click on the site you want a new tab will open that will search for that show on that site. Again, it will also search for the show if it does not exist. It does save time by making it all just one click.
