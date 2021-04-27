@@ -3,7 +3,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa and Viki straight from the MD
 
 ### Installation
    - [Download](https://github.com/JDatPNW/MyDramalistStreamFinder/archive/refs/heads/master.zip)
-   - Move the folder to the desired directory on you PC
+   - Move the folder to the desired directory on your PC
    - Unzip the folder
    - Open the Extension Settings: chrome://extensions/
    - Drag and Drop the unzipped folder into the Chrome Extension Settings Window
