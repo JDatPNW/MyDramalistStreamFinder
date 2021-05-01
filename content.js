@@ -12,18 +12,22 @@ function openStreamTabs(Selection){
     var AP_URL = "https://www.amazon.com/s?k=";
     var AP_PostFix = "&i=prime-instant-video&ref=nb_sb_noss_2";
     var KK_URL = "https://www.kocowa.com/en_us/search/";
+    var YT_URL = "https://www.youtube.com/results?search_query=";
 
     for (var i = 0; i < partsArray.length - 1; i++){
         VK_URL = VK_URL + partsArray[i] + "%20";
         NF_URL = NF_URL + partsArray[i] + "%20";
         AP_URL = AP_URL + partsArray[i] + "+";
         KK_URL = KK_URL + partsArray[i] + "%20";
+        YT_URL = YT_URL + partsArray[i] + "+";
     }
     VK_URL = VK_URL.substring(0, VK_URL.length - 3);
     NF_URL = NF_URL.substring(0, NF_URL.length - 3);
     AP_URL = AP_URL.substring(0, AP_URL.length - 1);
     AP_URL = AP_URL + AP_PostFix;
     KK_URL = KK_URL.substring(0, KK_URL.length - 3);
+    YT_URL = YT_URL.substring(0, YT_URL.length - 1);
+
 
     if (Selection == "Select_VK")
       openInNewTab(VK_URL);
@@ -33,6 +37,8 @@ function openStreamTabs(Selection){
       openInNewTab(AP_URL);
     if (Selection == "Select_KK")
       openInNewTab(KK_URL);
+    if (Selection == "Select_YT")
+      openInNewTab(YT_URL);
 }
 
 function createElement( str ) {
@@ -65,6 +71,7 @@ window.addEventListener("load", function load(event) {
 
       innerHTML    += "<button id =\"AP_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>Amazon Prime</a>";
       innerHTML    += "<button id =\"KK_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>Kokowa</a>";
+      innerHTML    += "<button id =\"YT_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>Youtube</a>";
       innerHTML    += "</div> </div>";
 
       elements[0].insertBefore(createElement(innerHTML), elements[0].childNodes[elements[0].childNodes.length - 2]);
@@ -90,6 +97,11 @@ window.addEventListener("load", function load(event) {
       var KK_Link = document.getElementById('KK_Dropdown');
       KK_Link.addEventListener('click', function() {
           openStreamTabs("Select_KK");
+      });
+
+      var YT_Link = document.getElementById('YT_Dropdown');
+      YT_Link.addEventListener('click', function() {
+          openStreamTabs("Select_YT");
       });
 };
 }, false);
