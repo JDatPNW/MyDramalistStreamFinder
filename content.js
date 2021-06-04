@@ -61,7 +61,7 @@ window.addEventListener("load", function load(event) {
           return;
       }
 
-      var innerHTML = "<div id=\"Stream_Buttons\" style=\"margin-top: -.5rem!important\" class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"> ";
+      var innerHTML = "<div id=\"Stream_Buttons\" style=\"margin-bottom: -0.25rem !important\" class=\"btn-group group-manage-list dropdown m-b-sm btn-block\"> ";
       innerHTML    += "<button id=\"Stream_Open_All_Links\" class=\"btn white main col-xs-10 col-sm-9\" data-toggle=\"dropdown\">Stream Drama</button> ";
       innerHTML    += "<button id=\"Stream_Dropdown\" class=\"btn white btn-clist col-xs-2 col-sm-3\" data-toggle=\"dropdown\"><i class=\"fa fa-list\"></i></button> ";
       innerHTML    += "<div class=\"dropdown-menu dropdown-menu-right manage-clist\">";
