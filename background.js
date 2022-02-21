@@ -1,3 +1,3 @@
-chrome.browserAction.onClicked.addListener(function(){
-  window.open("https://www.mydramalist.com");
+chrome.action.onClicked.addListener(function(){
+  chrome.tabs.create({url: "https://www.mydramalist.com"});
 });

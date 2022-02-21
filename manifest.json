@@ -1,20 +1,21 @@
 {
-  "name": "MDL",
+  "name": "MDL Stream Finder",
   "version": "0.1",
-  "browser_action":
+  "description": "A Chrome Extension that automatically searches Streaming sites for the given drama",
+  "action":
   {
     "default_icon": "icon.png"
   },
   "background":
   {
-      "scripts": ["background.js"]
+      "service_worker": "background.js"
   },
   "permissions": ["tabs"],
   "content_scripts": [{
       "js": ["content.js"],
       "matches": ["https://mydramalist.com/*"]
    }],
-  "manifest_version": 2,
+  "manifest_version": 3,
 "icons": {
         "16" : "icon.png",
         "48" : "icon.png",
