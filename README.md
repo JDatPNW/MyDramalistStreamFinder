@@ -2,6 +2,9 @@
 Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight from the MDL drama page.
 
 ### Installation
+You can now [Download](https://chrome.google.com/webstore/detail/mdl-stream-finder/opmdpgkejhnplnbfccekmagkbnjmcmgd) the Extension from the Chrome Webstore for free.
+
+
    - [Download](https://github.com/JDatPNW/MyDramalistStreamFinder/archive/refs/heads/master.zip)
    - Move the folder to the desired directory on your PC
    - Unzip the folder
