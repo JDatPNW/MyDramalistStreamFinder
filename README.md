@@ -31,6 +31,8 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   After Line <b>74</b> add an additional line as such:
   
   ```javascript
+      innerHTML    += "<button id =\"YourPage_dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>YourPage</a>";
+
   ```
   Where <i>YourPage_Dropdown</i> is a variable, so you should reuse that exact value later, and where <i>YourPage</i> at the very end is the Text that will appear on the MDL Website, so you can pick it freely.
   Right after that should be this line:
@@ -46,7 +48,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   
   ```javascript
       var YourPage_Link = document.getElementById('YourPage_Dropdown');
-      VK_Link.addEventListener('click', function() {
+      YourPage.addEventListener('click', function() {
           openStreamTabs("Select_YourPage");
       });
   ```
@@ -88,26 +90,31 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   
   <li>
       Since I wrote this code for fun it is not perfect, the next bit is proof of that. The logic we just added ads the seperator after every word, also after the last one. Of course the last word should not have that added, so we need to subtract that again. So just add 
+   
   ```javascript
     YourPage_URL = YourPage_URL.substring(0, YourPage_URL.length - 1);
   ```
    after line <b>25</b> of the original file. Here, again, make sure you spell the variable name correctly and where here it says <i>1</i> just count the number of characters of the seperator. Here it was just <i>-</i> so it is just one. For Viki it would have been 3 for example.
    
    Here there is another possibility. If the Page that you are trying to add adds more to the URL after the search term you also need to add that here. Let us assume the URT was actually this:
+   
   ```javascript
    https://www.yourpage.com/search?q=TEST-SHOW?more_from_the_page
   ```
    We can see that after our seasrch term there is this argument: <i>?more_from_the_page</i>. We need to add this as well.
    Do this as such:
    Create a variable right after the one we created in the previous step and call it by a new name:
+   
   ```javascript
     var YourPage_PostFix = "more_from_the_page";
   ```
    then we will add more code in the line right after the ine we created when we did this:
+   
   ```javascript
     YourPage_URL = YourPage_URL.substring(0, YourPage_URL.length - 1);
   ```
    The code we will add is simple:
+   
   ```javascript
     YourPage_URL = YourPage_URL + YourPage_PostFix;
   ```
@@ -115,9 +122,10 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   
   <li>
    Lastly, we need to add the functionality that will open the page. To do so we need to add code right after line <b>41</b> in the original.
+   
   ```javascript
-       if (Selection == "Select_YourPage")
-      openInNewTab(YourPage_URL);
+   if (Selection == "Select_YourPage")
+   openInNewTab(YourPage_URL);
   ```
    Again, make sure that both variables are written correctly!
    This should do it, your code should now look something like this:
@@ -125,7 +133,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   </ol>
   
   ```javascript
-function openInNewTab(url) {
+  function openInNewTab(url) {
     var win = window.open(url, '_blank');
     win.focus();
 }
@@ -140,6 +148,9 @@ function openStreamTabs(Selection){
     var AP_PostFix = "&i=prime-instant-video&ref=nb_sb_noss_2";
     var KK_URL = "https://www.kocowa.com/en_us/search/";
     var YT_URL = "https://www.youtube.com/results?search_query=";
+    var YourPage_URL = "https://www.yourpage.com/search?q=";
+    var YourPage_PostFix = "more_from_the_page";
+
 
     for (var i = 0; i < partsArray.length - 1; i++){
         VK_URL = VK_URL + partsArray[i] + "%20";
@@ -147,6 +158,8 @@ function openStreamTabs(Selection){
         AP_URL = AP_URL + partsArray[i] + "+";
         KK_URL = KK_URL + partsArray[i] + "%20";
         YT_URL = YT_URL + partsArray[i] + "+";
+        YourPage_URL = YourPage_URL + partsArray[i] + "-";
+
     }
     VK_URL = VK_URL.substring(0, VK_URL.length - 3);
     NF_URL = NF_URL.substring(0, NF_URL.length - 3);
@@ -154,6 +167,9 @@ function openStreamTabs(Selection){
     AP_URL = AP_URL + AP_PostFix;
     KK_URL = KK_URL.substring(0, KK_URL.length - 3);
     YT_URL = YT_URL.substring(0, YT_URL.length - 1);
+    YourPage_URL = YourPage_URL.substring(0, YourPage_URL.length - 1);
+    YourPage_URL = YourPage_URL + YourPage_PostFix;
+
 
 
     if (Selection == "Select_VK")
@@ -166,6 +182,9 @@ function openStreamTabs(Selection){
       openInNewTab(KK_URL);
     if (Selection == "Select_YT")
       openInNewTab(YT_URL);
+    if (Selection == "Select_YourPage")
+      openInNewTab(YourPage_URL);
+
 }
 
 function createElement( str ) {
@@ -230,7 +249,13 @@ window.addEventListener("load", function load(event) {
       YT_Link.addEventListener('click', function() {
           openStreamTabs("Select_YT");
       });
+
+      var YourPage_Link = document.getElementById('YourPage_Dropdown');
+      YourPage_Link.addEventListener('click', function() {
+          openStreamTabs("Select_YourPage");
+      });
 };
-}, false);  ```
+}, false);
+  ```
   
 </details>
