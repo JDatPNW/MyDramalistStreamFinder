@@ -66,7 +66,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   ```javascript
    https://www.yourpage.com/search?q=TEST-SHOW
   ```
-   
+   The URL begins with <i>https://www.yourpage.com/search?q=</i> and seperates the terms with "-".
    So after line <b>15</b> in the original we will add our own new variable. 
    
   ```javascript
@@ -74,6 +74,15 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   ```
    You can tell that we only included the string up until our search term would start. <i>YourPage_URL</i> is a new variable, so make sure to type it the same way every time!
    
+  </li>
+  
+  <li>
+   Now after line <b>22</b> of the original file we will add on top of our just created variable. The logic already exists so it is easy. Just do it like this:
+  
+  ```javascript
+        YourPage_URL = YourPage_URL + partsArray[i] + "-";
+  ```
+   Make sure <i>YourPage_URL</i> is spelled the same way as above and also make sure that you use the right seperator. In our example that was <i>-</i>, so we put that in between the <i>" "</i> at the end of the line!
   </li>
 
   </ol>
