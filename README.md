@@ -23,6 +23,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
 
   Once you click on the site you want a new tab will open that will search for that show on that site. Again, it will also search for the show if it does not exist. It does save time by making it all just one click.
 
+### Adding your own Sites
 <details>
   <summary>Adding your own sites</summary>
   <ol>
@@ -49,10 +50,31 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
           openStreamTabs("Select_YourPage");
       });
   ```
-  Make sure that <i>YourPage_Dropdown</i> is spelled exactly the same way as it was in step 1. Also, <i>Select_YourPage</i> is a function name, so it should also be spelled exactly the same way later on, so pay atetntion here. Position your code block after the last one of the same logic (in the original file that would be right after line 105. Right after YouYube block.
+  Make sure that <i>YourPage_Dropdown</i> is spelled exactly the same way as it was in step 1. Also, <i>Select_YourPage</i> is a function name, so it should also be spelled exactly the same way later on, so pay atetntion here. Position your code block after the last one of the same logic (in the original file that would be right after line <b>105</b>. Right after the YouYube block.
   </li>
+  
+  <li>
+   Now you need to figure out the logic and the syntax of the websites search funtion. This is not as difficult as it sounds. Let's look at how Viki does that:
+   To do that I will go to Viki and just do a test search. I will search for "TEST DRAMA" on Viki and look at the URL that is created by that. 
 
+  ```javascript
+   https://www.viki.com/search?q=TEST%20SHOW
+  ```
+   This tells us that the URL will always begin with <i>https://www.viki.com/search?q=</i> followed by our test string, where spaces are replaced with <i>%20</i>. 
+   Let us pretend here that our URL for our new site looks like this:
 
+  ```javascript
+   https://www.yourpage.com/search?q=TEST-SHOW
+  ```
+   
+   So after line <b>15</b> in the original we will add our own new variable. 
+   
+  ```javascript
+       var YourPage_URL = "https://www.yourpage.com/search?q=";
+  ```
+   You can tell that we only included the string up until our search term would start. <i>YourPage_URL</i> is a new variable, so make sure to type it the same way every time!
+   
+  </li>
 
   </ol>
   
