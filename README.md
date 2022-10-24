@@ -31,7 +31,7 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
   After Line <b>74</b> add an additional line as such:
   
   ```javascript
-      innerHTML    += "<button id =\"YourPage_dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>YourPage</a>";
+      innerHTML    += "<button id =\"YourPage_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>YourPage</a>";
 
   ```
   Where <i>YourPage_Dropdown</i> is a variable, so you should reuse that exact value later, and where <i>YourPage</i> at the very end is the Text that will appear on the MDL Website, so you can pick it freely.
@@ -218,6 +218,7 @@ window.addEventListener("load", function load(event) {
       innerHTML    += "<button id =\"AP_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>Amazon Prime</a>";
       innerHTML    += "<button id =\"KK_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>Kokowa</a>";
       innerHTML    += "<button id =\"YT_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>Youtube</a>";
+      innerHTML    += "<button id =\"YourPage_Dropdown\" class=\"dropdown-item m-t-sm m-b-sm btn-create-list\"</i>YourPage</a>";
       innerHTML    += "</div> </div>";
 
       elements[0].insertBefore(createElement(innerHTML), elements[0].childNodes[elements[0].childNodes.length - 2]);
