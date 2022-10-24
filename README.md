@@ -83,8 +83,36 @@ Links dynamically to Netflix, Amazon Prime, Kokowa, YouTube and Viki straight fr
         YourPage_URL = YourPage_URL + partsArray[i] + "-";
   ```
    Make sure <i>YourPage_URL</i> is spelled the same way as above and also make sure that you use the right seperator. In our example that was <i>-</i>, so we put that in between the <i>" "</i> at the end of the line!
+   
   </li>
-
+  
+  <li>
+      Since I wrote this code for fun it is not perfect, the next bit is proof of that. The logic we just added ads the seperator after every word, also after the last one. Of course the last word should not have that added, so we need to subtract that again. So just add 
+  ```javascript
+    YourPage_URL = YourPage_URL.substring(0, YourPage_URL.length - 1);
+  ```
+   after line <b>25</b> of the original file. Here, again, make sure you spell the variable name correctly and where here it says <i>1</i> just count the number of characters of the seperator. Here it was just <i>-</i> so it is just one. For Viki it would have been 3 for example.
+   
+   Here there is another possibility. If the Page that you are trying to add adds more to the URL after the search term you also need to add that here. Let us assume the URT was actually this:
+  ```javascript
+   https://www.yourpage.com/search?q=TEST-SHOW?more_from_the_page
+  ```
+   We can see that after our seasrch term there is this argument: <i>?more_from_the_page</i>. We need to add this as well.
+   Do this as such:
+   Create a variable right after the one we created in the previous step and call it by a new name:
+  ```javascript
+    var YourPage_PostFix = "more_from_the_page";
+  ```
+   then we will add more code in the line right after the ine we created when we did this:
+  ```javascript
+    YourPage_URL = YourPage_URL.substring(0, YourPage_URL.length - 1);
+  ```
+   The code we will add is simple:
+  ```javascript
+    YourPage_URL = YourPage_URL + YourPage_PostFix;
+  ```
+  </li>
+  
   </ol>
   
   ```javascript
